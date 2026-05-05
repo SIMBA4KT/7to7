@@ -70,6 +70,7 @@ let productListHTML = document.querySelector(".cart-items");
 
 let productList = [];
 let cart = [];
+let cartCount = document.querySelector(".cart-count");
 
 iconCart.addEventListener("click", () => {
   body.classList.toggle("showCart");
@@ -124,7 +125,10 @@ document.addEventListener("click", (event) => {
         cart.push({ ...product, quantity: 1 });
       }
       updateCart();
-    
+      cartCount.textContent = cart.reduce(
+        (total, item) => total + item.quantity,
+        0,
+      );
     }
   }
 });
@@ -157,6 +161,10 @@ productListHTML.addEventListener("click", (event) => {
     const productId = event.target.dataset.id;
     cart = cart.filter((item) => item.id != productId);
     updateCart();
+    cartCount.textContent = cart.reduce(
+      (total, item) => total + item.quantity,
+      0,
+    );
   }
 });
 
