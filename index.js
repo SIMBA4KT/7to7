@@ -61,6 +61,7 @@ let products = [
     image: "images/plain-hooded-fleece-sweatshirt-yellow.jpg",
   },
 ];
+// Declaration of variables for DOM elements and state
 
 let iconCart = document.querySelector(".icon-cart");
 
@@ -71,14 +72,17 @@ let productListHTML = document.querySelector(".cart-items");
 let productList = [];
 let cart = [];
 let cartCount = document.querySelector(".cart-count");
+let searchBar = document.querySelector(".search-bar");
+let searchButton = document.querySelector(".search-button");
 
+// Event listeners for cart toggle and product interactions
 iconCart.addEventListener("click", () => {
   body.classList.toggle("showCart");
 });
 closeCart.addEventListener("click", () => {
   body.classList.toggle("showCart");
 });
-
+// Function to render products on the page
 const renderProducts = () => {
   const section1 = document.getElementById("section1-products");
   const section2 = document.getElementById("section2-products");
@@ -103,6 +107,7 @@ const renderProducts = () => {
 
 renderProducts();
 
+// Event listener for About Us button
 const aboutBtn = document.querySelector(".about-btn");
 aboutBtn.addEventListener("click", () => {
   document.getElementById("content").innerHTML = `
@@ -112,6 +117,7 @@ aboutBtn.addEventListener("click", () => {
     all while ensuring excellent customer service. Thank you for choosing us for your shopping experience!</p>
 `;
 });
+
 // Add to Cart with event delegation
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("button-cart")) {
@@ -132,7 +138,7 @@ document.addEventListener("click", (event) => {
     }
   }
 });
-
+// Function to update cart display
 const updateCart = () => {
   productListHTML.innerHTML = "";
   if (cart.length > 0) {
@@ -176,6 +182,7 @@ const performSearch = () => {
   );
   displaySearchResults(searchResults);
 };
+// Event listeners for search functionality
 searchButton.addEventListener("click", performSearch);
 searchBar.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
