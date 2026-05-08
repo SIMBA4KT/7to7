@@ -6,6 +6,18 @@
 .body {
   font-family: Arial, sans-serif;
 }
+::-webkit-scrollbar {
+  width: 14px;
+  height: auto;
+}
+::-webkit-scrollbar-thumb {
+  background-color: hsl(122, 77%, 43%);
+  border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
 #content {
   font-weight: bold;
   font-style: oblique;
@@ -77,7 +89,6 @@
   width: 150px;
 }
 .search-results-container {
-  position: absolute;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
@@ -88,8 +99,6 @@
   border-radius: 4px;
   width: 200px;
   max-height: 300px;
-  overflow-y: auto;
-  z-index: 1000;
 }
 .no-products {
   text-align: center;
