@@ -76,6 +76,12 @@
   margin-right: 0;
   width: 150px;
 }
+.no-products {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  margin-top: 20px;
+}
 
 .buttons {
   background-color: green;

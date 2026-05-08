@@ -205,6 +205,6 @@ const displaySearchResults = (results) => {
       searchResultsContainer.appendChild(productHTML);
     });
   } else {
-    searchResultsContainer.innerHTML = `<p>No products found.</p>`;
+    searchResultsContainer.innerHTML = `<p class="no-products">No products found.</p>`;
   }
 };
