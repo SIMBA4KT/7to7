@@ -157,7 +157,7 @@ const updateCart = () => {
       productListHTML.appendChild(cartItemHTML);
     });
   } else {
-    productListHTML.innerHTML = "<p>Your cart is empty</p>";
+    productListHTML.innerHTML = `<p class="empty-cart">Your cart is empty</p>`;
   }
 };
 
@@ -177,18 +177,33 @@ productListHTML.addEventListener("click", (event) => {
 //Search functionality
 const performSearch = () => {
   const query = searchBar.value.trim().toLowerCase();
+  if (query === "") {
+    // Reset to show all products if search is empty
+    document.getElementById("section1-products").style.display = "grid";
+    document.getElementById("section2-products").style.display = "grid";
+    document.querySelector(".search-results").innerHTML = "";
+    return;
+  }
   const searchResults = products.filter((product) =>
     product.name.toLowerCase().includes(query),
   );
+  // Hide product sections and show search results
+
+  document.getElementById("section1-products").style.display = "none";
+  document.getElementById("section2-products").style.display = "none";
   displaySearchResults(searchResults);
 };
 // Event listeners for search functionality
-searchButton.addEventListener("click", performSearch);
-searchBar.addEventListener("keyup", (event) => {
-  if (event.key === "Enter") {
-    performSearch();
-  }
-});
+if (searchButton) {
+  searchButton.addEventListener("click", performSearch);
+}
+if (searchBar) {
+  searchBar.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+      performSearch();
+    }
+  });
+}
 const displaySearchResults = (results) => {
   const searchResultsContainer = document.querySelector(".search-results");
   searchResultsContainer.innerHTML = "";
@@ -197,10 +212,12 @@ const displaySearchResults = (results) => {
       const productHTML = document.createElement("div");
       productHTML.classList.add("search-result-item");
       productHTML.innerHTML = `
+      <div class="search-result-container">
         <img src="${product.image}" alt="${product.name}" class="search-result-image">
         <p class="search-result-name">${product.name}</p>
         <p class="search-result-price">$${product.price}</p>
         <button class="button-cart" data-id="${product.id}">Add to Cart</button>
+      </div>
       `;
       searchResultsContainer.appendChild(productHTML);
     });
