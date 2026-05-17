@@ -16,16 +16,6 @@
 }
 
 /* Contacts Card Styles */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #1eace4 0%, #a1dd15 100%);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .card {
   background-color: white;

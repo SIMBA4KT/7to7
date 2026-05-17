@@ -109,14 +109,16 @@ renderProducts();
 
 // Event listener for About Us button
 const aboutBtn = document.querySelector(".about-btn");
-aboutBtn.addEventListener("click", () => {
-  document.getElementById("content").innerHTML = `
+if (aboutBtn) {
+  aboutBtn.addEventListener("click", () => {
+    document.getElementById("content").innerHTML = `
   <h2>About Us</h2>
   <p>Welcome to our online store! We are passionate about providing high-quality products that enhance your lifestyle.
    Our mission is to offer a wide range of items that cater to your needs and preferences,
     all while ensuring excellent customer service. Thank you for choosing us for your shopping experience!</p>
 `;
-});
+  });
+}
 
 // Add to Cart with event delegation
 document.addEventListener("click", (event) => {
